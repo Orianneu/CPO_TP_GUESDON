@@ -18,12 +18,12 @@ public class TP1_convertisseur_GUESDON {
      */
     public static void main(String[] args) {
         
-        Scanner saisieUtilisateur1 = new Scanner(System.in);
+        Scanner saisieUtilisateur1 = new Scanner(System.in);  //saisie de la température
         System.out.println("Entrez une valeur : ");
         double temp = saisieUtilisateur1.nextDouble();
         
         Scanner saisieUtilisateur2 = new Scanner(System.in);
-        System.out.println("Saisissez la conversion que vous souhaiter effectuer :\n" 
+        System.out.println("Saisissez la conversion que vous souhaiter effectuer :\n"  //Affichage du menu de choix de conversion
                 + "1) De Celcius vers Kelvin\n" 
                 + "2) De Kelvin vers Celcius\n"
                 + "3) De Farenheit vers Celcius\n"
@@ -31,8 +31,8 @@ public class TP1_convertisseur_GUESDON {
                 + "5) De Farenheit vers Kelvin");
         int choix = saisieUtilisateur2.nextInt();
         
-        if (choix == 1){
-            System.out.println("La température en Kelvin est : "+CelciusVersKelvin(temp));
+        if (choix == 1){        //vérification des conditions par rapport à la saisie, pour associer à la bonne "fonction"
+            System.out.println("La température en Kelvin est : "+CelciusVersKelvin(temp)); //Affichage du résultat de la conversion
         }
         if (choix == 2){
             System.out.println("La température en Celcius est : "+KelvinVersCelcius(temp));
@@ -47,8 +47,8 @@ public class TP1_convertisseur_GUESDON {
             System.out.println("La température en Kelvin est : "+FarenheitVersKelvin(temp));
         }  
     }
-    public static double CelciusVersKelvin (double tempc) {
-        double tempk = tempc+273.15;
+    public static double CelciusVersKelvin (double tempc) {  //Fonction de conversion 
+        double tempk = tempc+273.15;        //Calcul de conversion de celcius en kelvin à l'aide de la formule générale
         return tempk;
     }
     public static double KelvinVersCelcius (double tempk) {
@@ -60,7 +60,7 @@ public class TP1_convertisseur_GUESDON {
         return tempc;
     }
     public static double KelvinVersFarenheit (double tempk) {
-        double tempc = tempk-273.15;
+        double tempc = tempk-273.15;        //on passe par les Celcius pour revenir aux farenheit
         double tempf = (tempc*1.8)+32;
         return tempf;
     }
