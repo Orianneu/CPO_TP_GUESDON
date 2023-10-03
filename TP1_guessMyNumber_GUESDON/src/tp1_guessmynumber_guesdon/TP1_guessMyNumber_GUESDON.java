@@ -18,18 +18,16 @@ public class TP1_guessMyNumber_GUESDON {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args, boolean cauchemar) {
 
         Scanner scanner = new Scanner(System.in);
         Random generateurAleat = new Random();
-        System.out.println("Choisir la difficulté (1,2, 3 ou 4) : ");
+        System.out.println("Choisir la difficulté (1,2, 3 ou 4) : "); //Choix  difficulté
         String niveau = scanner.nextLine();
+
         
-        int tentmax = 15;
-        boolean cauchemar = false;
-        if (niveau == "4"){
-            cauchemar = true;
-        }
+        int tentmax = 0;
+
         //tentatives pour chaque niveau de difficultés
         if (niveau=="1") {
             tentmax = 30;
@@ -41,30 +39,30 @@ public class TP1_guessMyNumber_GUESDON {
             tentmax = 5;
             cauchemar = true;
         }
-        
+
         int nombreAleatoire = generateurAleat.nextInt(101);
         int tentative = 0;
 
         while (tentative < tentmax) {
-            System.out.println("Choisir un nombre entre 0 et 100 : ");
-            int nombreUtilisateur = scanner.nextInt();
+            System.out.println("Choisir un nombre entre 0 et 100 : "); //texte affichage
+            int nombreUtilisateur = scanner.nextInt(); //rentrée de la valeur
 
-            if (nombreUtilisateur == nombreAleatoire) {
-                System.out.println("Bravo!");
+            if (nombreUtilisateur == nombreAleatoire) { //Si le guess est bon
+                System.out.println("Bravo!"); //message de victoire
                 break;
             } else {
-                if (cauchemar && generateurAleat.nextInt(100) < 30) {
-                    if (nombreUtilisateur < nombreAleatoire) {
-                        System.out.println("trop grand");
+                if (cauchemar && generateurAleat.nextInt(100) < 30) { //Mode cauchemar avec 30% de fausses réponses
+                    if (nombreUtilisateur < nombreAleatoire) { //si fausse réponse alos on a cette boucle if
+                        System.out.println("trop grand"); 
                     } else {
                         System.out.println("trop petit");
                     }
                     
                 } else {
-                    if (nombreUtilisateur > nombreAleatoire) {
+                    if (nombreUtilisateur > nombreAleatoire) { //comparateur entre notre valeur et la valeur aléatoire
                         System.out.println("trop grand");
                     } else {
-                        System.out.println("trop petit");
+                        System.out.println("trop petit"); //si notre valeur est trop petite
                     }
                 }
             }
@@ -72,10 +70,10 @@ public class TP1_guessMyNumber_GUESDON {
             tentative++;
         }
 
-        if (tentative == tentmax) {
-            System.out.println("Plus de tentatives disponible, c'était : " + nombreAleatoire);
+        if (tentative == tentmax) { 
+            System.out.println("Plus de tentatives disponible, c'était : " + nombreAleatoire); //si il n'y a plus assez de tentatives
         } else {
-            System.out.println("Tentatives: " + (tentative + 1));
+            System.out.println("Tentatives: " + (tentative + 1)); //nb tentatives
         }
     }
 }
