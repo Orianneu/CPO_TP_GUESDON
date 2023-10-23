@@ -10,15 +10,14 @@ package Armes;
  */
 
 public class Epee extends Arme {
-    int indicefinesse;
+    private int finesse; //finesse de l'épée
 
-    public Epee(String nom, int niveauattaque, int indicefinesse) {
-        super(nom, niveauattaque);
-        this.indicefinesse = indicefinesse;
+    public Epee(String nom, int niveauAttaque, int finesse) {
+        super(nom, niveauAttaque);
+        this.finesse = finesse;
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + ", Indice de finesse : " + indicefinesse;
+    public int getFinesse() {
+        return finesse;
     }
 }

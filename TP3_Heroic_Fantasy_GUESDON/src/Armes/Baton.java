@@ -10,15 +10,14 @@ package Armes;
  */
 
 public class Baton extends Arme {
-    int age;
+    private int age; //age du baton
 
-    public Baton(String nom, int niveauattaque, int age) {
-        super(nom, niveauattaque);
+    public Baton(String nom, int niveauAttaque, int age) {
+        super(nom, niveauAttaque);
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + ", Age : " + age;
+    public int getAge() {
+        return age;
     }
 }
