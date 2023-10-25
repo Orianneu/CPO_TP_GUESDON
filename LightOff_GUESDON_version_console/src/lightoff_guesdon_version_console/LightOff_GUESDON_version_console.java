@@ -14,7 +14,8 @@ public class LightOff_GUESDON_version_console {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Partie partie = new Partie(); // Créez une instance de Partie
+        partie.initialiserPartie();   // Initialisez la partie si nécessaire
+        partie.lancerPartie();        // Lancez le jeu
     }
-    
 }

@@ -11,29 +11,47 @@ package lightoff_guesdon_version_console;
 public class CelluleLumineuse {
     private boolean etat; //etat : true si allumée et false si eteint
 
-    public CelluleLumineuse() {
+    public CelluleLumineuse(boolean par) {
         this.etat = false;}
     
+    /**
+     * change l'état de la cellule, si eteinte, allume et si allumée, eteint.
+     */
     public void activerCellule() {
-        this.etat = !this.etat;} //change l'état de la cellule, si eteinte, allume et si allumée, eteint.
+        this.etat = !this.etat;} 
     
+    /**
+     *  eteint la cellule peu importe son état
+     */
     public void eteindreCellule() {
-        this.etat = false;} //eteint la cellule peu importe son état
+        this.etat = false;} 
     
+    /**
+     * vérifie si eteint. true si oui, false si elle est allumée
+     * @return
+     */
     public boolean estEteint() {
-        return !this.etat;} //vérifie si eteint. true si oui, false si elle est allumée
+        return !this.etat;} 
     
-    public boolean getEtat() {
-        return this.etat;} //renvoie etat actuel : true si allumée, false si eteint.
+    /**
+     * renvoie etat actuel : true si allumée, false si eteint.
+     * @return
+     */
+    public boolean getEtat(boolean bool) {
+        return this.etat;} 
     
+    /**
+     * pour afficher O ou X si eteinte ou allumée
+     * @return
+     */
     @Override
-    public String toString() { //redefini to string
-        return this.etat ? "X" : "O";} //pour afficher O ou X si eteinte ou allumée
-
-    boolean getEtat(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String toString(){ 
+        if (this.etat==true){
+            return "X";
+        }
+        else if(this.etat==false){
+            return "O";
+        }
+        return null;
     }
 }
-
-
-    
