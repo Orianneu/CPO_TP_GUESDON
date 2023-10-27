@@ -54,10 +54,10 @@ public class CelluleLumineuse {
     @Override
     public String toString(){ 
         if (this.etat==true){
-            return "X";
+            return "\u001B[43m  \u001B[0m";
         }
         else if(this.etat==false){
-            return "O";
+            return "\u001B[47m  \u001B[0m";
         }
         return null;
     }

@@ -30,7 +30,7 @@ public class Partie {
      */
     public void initialiserPartie(){
         grille.eteindreToutesLesCellules();
-        grille.melangerMatriceAleatoirement(10);
+        grille.melangerMatriceAleatoirement(100);
     }
 
     /**
@@ -44,10 +44,11 @@ public class Partie {
         System.out.println(grille.toString()); // Afficher l'état de la grille
 
         System.out.println("Choisissez une option :");
-        System.out.println("1. Éteindre une ligne");
-        System.out.println("2. Éteindre une colonne");
-        System.out.println("3. Éteindre une diagonale descendante");
-        System.out.println("4. Éteindre une diagonale montante");
+        System.out.println("1. Eteindre une ligne");
+        System.out.println("2. Eteindre une colonne");
+        System.out.println("3. Eteindre une diagonale descendante");
+        System.out.println("4. Eteindre une diagonale montante");
+        System.out.println("5. Mélanger");
         System.out.println("0. Quitter");
 
         int choix = scanner.nextInt();
@@ -60,6 +61,8 @@ public class Partie {
             System.out.println("Entrez le numéro de la colonne (0-6) : ");
             int colonne = scanner.nextInt();
             grille.activerColonneDeCellules(colonne);}
+        else if(choix==5){
+            grille.melangerMatriceAleatoirement(100);}
         else if (choix == 3){
             grille.activerDiagonaleDescendante();}
         else if (choix == 4){
@@ -71,10 +74,9 @@ public class Partie {
             System.out.println("Choix invalide. Veuillez entrer un nombre entre 0 et 4.");}        
         nbCoups++; //+1 à nbCoups
     }
-
-    System.out.println(grille.toString());
-    System.out.println("Super ! Vous avez gagne en " + nbCoups + " coups.");
+    if(grille.cellulesToutesEteintes()){
+        System.out.println(grille.toString());
+        System.out.println("Super ! Vous avez gagne en " + nbCoups + " coups.");
+    }
     scanner.close();
-}
-
-}
+}}
