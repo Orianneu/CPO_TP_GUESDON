@@ -11,38 +11,45 @@ package lightoff_guesdon_version_console;
 public class CelluleLumineuse {
     private boolean etat; //etat : true si allumée et false si eteint
 
-    public CelluleLumineuse(boolean par) {
+    /**
+     *  etat = eteint
+     */
+    public CelluleLumineuse(){
         this.etat = false;}
     
     /**
      * change l'état de la cellule, si eteinte, allume et si allumée, eteint.
      */
-    public void activerCellule() {
+    public void activerCellule(){
         this.etat = !this.etat;} 
     
     /**
      *  eteint la cellule peu importe son état
      */
-    public void eteindreCellule() {
-        this.etat = false;} 
+    public void eteindreCellule(){
+        this.etat =false;} 
     
     /**
      * vérifie si eteint. true si oui, false si elle est allumée
-     * @return
+     * @return boolean , true si cellule eteinte, false sinon
      */
-    public boolean estEteint() {
-        return !this.etat;} 
+    public boolean estEteint(){
+        if (etat == false){
+            return true;}
+        else{
+            return false;}  
+    }
     
     /**
      * renvoie etat actuel : true si allumée, false si eteint.
-     * @return
+     * @return la variable etat 
      */
-    public boolean getEtat(boolean bool) {
+    public boolean getEtat(){
         return this.etat;} 
     
     /**
      * pour afficher O ou X si eteinte ou allumée
-     * @return
+     * @return string "X" ou "O" pour si cellule allumée ou éteinte
      */
     @Override
     public String toString(){ 
