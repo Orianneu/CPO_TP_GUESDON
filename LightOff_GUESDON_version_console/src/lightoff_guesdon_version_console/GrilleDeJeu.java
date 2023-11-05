@@ -22,11 +22,19 @@ public class GrilleDeJeu {
      * @param nbLignes nombre de lignes dans la matrice de jeu
      * @param nbColonnes nombre de colonnes dans la matrice de jeu
      */
-    public GrilleDeJeu(int nbLignes, int nbColonnes){
+    public GrilleDeJeu(int nbLignes, int nbColonnes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
         this.matriceCellules = new CelluleLumineuse[nbLignes][nbColonnes];
         genererNouvelleMatriceCellulesLumineuses();
+    }
+
+    public int getNbLignes() {
+        return nbLignes;
+    }
+
+    public int getNbColonnes() {
+        return nbColonnes;
     }
 
     int i = 0;
@@ -35,26 +43,29 @@ public class GrilleDeJeu {
     /**
      * parcours lignes et colonnes pour generer la grille de cellules eteintes
      */
-    public void genererNouvelleMatriceCellulesLumineuses(){
-        for (i=0; i<nbLignes; i++){
-            for (j=0; j<nbColonnes; j++){
-                matriceCellules[i][j]=new CelluleLumineuse();}
-    }   }
+    public void genererNouvelleMatriceCellulesLumineuses() {
+        for (i = 0; i < nbLignes; i++) {
+            for (j = 0; j < nbColonnes; j++) {
+                matriceCellules[i][j] = new CelluleLumineuse();
+            }
+        }
+    }
 
     /**
      * parcours lignes et colonnes pour eteindre chaque cellule
      */
-    public void eteindreToutesLesCellules(){
-        for (i=0; i<nbLignes; i++){
-            for (j=0; j<nbColonnes; j++){
-                matriceCellules[i][j].eteindreCellule();}
+    public void eteindreToutesLesCellules() {
+        for (i = 0; i < nbLignes; i++) {
+            for (j = 0; j < nbColonnes; j++) {
+                matriceCellules[i][j].eteindreCellule();
+            }
         }
     }
 
     /**
      * active une ligne, une colonne ou une diagonale aléatoirement
      */
-    public void activerLigneColonneOuDiagonaleAleatoire(){
+    public void activerLigneColonneOuDiagonaleAleatoire() {
         Random random = new Random();
         int rand = random.nextInt(3);               //int au hasard entre 0,1 et 2
         if (rand == 1) {
@@ -78,28 +89,31 @@ public class GrilleDeJeu {
      *
      * @param nbTours nombre spécifié de tours pour mélanger
      */
-public void melangerMatriceAleatoirement(int nbTours){
-    Random rand = new Random();
-    for (int i=0; i<nbTours; i++){
-        int choix = rand.nextInt(4);
-        if (choix==0){
-            activerLigneDeCellules(rand.nextInt(nbLignes));}
-        else if(choix==1){
-            activerColonneDeCellules(rand.nextInt(nbColonnes));}
-        else if(choix==2){
-            activerDiagonaleDescendante();}
-        else if(choix == 3){
-            activerDiagonaleMontante();}
-    }}
+    public void melangerMatriceAleatoirement(int nbTours) {
+        Random rand = new Random();
+        for (int i = 0; i < nbTours; i++) {
+            int choix = rand.nextInt(4);
+            if (choix == 0) {
+                activerLigneDeCellules(rand.nextInt(nbLignes));
+            } else if (choix == 1) {
+                activerColonneDeCellules(rand.nextInt(nbColonnes));
+            } else if (choix == 2) {
+                activerDiagonaleDescendante();
+            } else if (choix == 3) {
+                activerDiagonaleMontante();
+            }
+        }
+    }
 
     /**
      * prends cellule par cellule de la ligne et les actives
      *
      * @param idLigne
      */
-    public void activerLigneDeCellules(int idLigne){
-        for (j=0;j<nbColonnes;j++){
-            matriceCellules[idLigne][j].activerCellule();}
+    public void activerLigneDeCellules(int idLigne) {
+        for (j = 0; j < nbColonnes; j++) {
+            matriceCellules[idLigne][j].activerCellule();
+        }
     }
 
     /**
@@ -107,9 +121,10 @@ public void melangerMatriceAleatoirement(int nbTours){
      *
      * @param idColonne
      */
-    public void activerColonneDeCellules(int idColonne){
-        for (i=0;i<nbLignes; i++){
-            matriceCellules[i][idColonne].activerCellule();}
+    public void activerColonneDeCellules(int idColonne) {
+        for (i = 0; i < nbLignes; i++) {
+            matriceCellules[i][idColonne].activerCellule();
+        }
     }
 
     int a;
@@ -117,13 +132,13 @@ public void melangerMatriceAleatoirement(int nbTours){
     /**
      * active la diagonale descendante de la grille
      */
-    public void activerDiagonaleDescendante(){
-        if (nbLignes>nbColonnes){
-            a=nbColonnes;}
-        else{
-            a=nbLignes;
+    public void activerDiagonaleDescendante() {
+        if (nbLignes > nbColonnes) {
+            a = nbColonnes;
+        } else {
+            a = nbLignes;
         }
-        for(i=0;i<a;i++){
+        for (i = 0; i < a; i++) {
             matriceCellules[i][i].activerCellule();
         }
     }
@@ -131,14 +146,15 @@ public void melangerMatriceAleatoirement(int nbTours){
     /**
      * active la diagonale montante de la grille
      */
-    public void activerDiagonaleMontante(){
-        if(nbLignes>nbColonnes){
-            a=nbColonnes;}
-        else{
-            a=nbLignes;
+    public void activerDiagonaleMontante() {
+        if (nbLignes > nbColonnes) {
+            a = nbColonnes;
+        } else {
+            a = nbLignes;
         }
-        for(i=0;i<a; i++) {
-            matriceCellules[i][nbColonnes-1-i].activerCellule();} //active diag descendante (d'où le "-1-i")
+        for (i = 0; i < a; i++) {
+            matriceCellules[i][nbColonnes - 1 - i].activerCellule();
+        } //active diag descendante (d'où le "-1-i")
     }
 
     /**
@@ -146,11 +162,14 @@ public void melangerMatriceAleatoirement(int nbTours){
      *
      * @return booléen : true si toutes les cellules sont eteinte, false sinon
      */
-    public boolean cellulesToutesEteintes(){
-        for(i=0; i<nbLignes; i++){ //parcours lignes
-            for(j=0;j<nbColonnes;j++) { //parcours colonnes
+    public boolean cellulesToutesEteintes() {
+        for (i = 0; i < nbLignes; i++) { //parcours lignes
+            for (j = 0; j < nbColonnes; j++) { //parcours colonnes
                 if (!matriceCellules[i][j].estEteint()) {
-                    return false;}}}
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
@@ -161,25 +180,31 @@ public void melangerMatriceAleatoirement(int nbTours){
      * @return grille en str
      */
     @Override
-    public String toString(){
+    public String toString() {
         String grilleStr = " |";
-        for (int i=0;i<nbColonnes;i++){
-            grilleStr += " " + i + " |";}      
+        for (int i = 0; i < nbColonnes; i++) {
+            grilleStr += " " + i + " |";
+        }
         grilleStr += "\n";
-        for (int i=0;i<(nbColonnes+1)*4;i++){
-            grilleStr += "-";}
-        grilleStr+="\n";
-        for (int i=0;i<nbLignes;i++){
-            grilleStr += i+" |";
-            for (int j=0;j<nbColonnes;j++){
-                if(matriceCellules[i][j].getEtat()){
-                    grilleStr += " \u001B[43m  \u001B[0m|";}
-                else{
-                    grilleStr += " \u001B[47m  \u001B[0m|";}}
+        for (int i = 0; i < (nbColonnes + 1) * 4; i++) {
+            grilleStr += "-";
+        }
+        grilleStr += "\n";
+        for (int i = 0; i < nbLignes; i++) {
+            grilleStr += i + " |";
+            for (int j = 0; j < nbColonnes; j++) {
+                if (matriceCellules[i][j].getEtat()) {
+                    grilleStr += " \u001B[43m  \u001B[0m|";
+                } else {
+                    grilleStr += " \u001B[47m  \u001B[0m|";
+                }
+            }
             grilleStr += "\n";
-            for (int j=0;j<(nbColonnes+1)*4;j++){
-                grilleStr += "-";}
-            grilleStr += "\n";}
+            for (int j = 0; j < (nbColonnes + 1) * 4; j++) {
+                grilleStr += "-";
+            }
+            grilleStr += "\n";
+        }
         return grilleStr;
     }
 }
